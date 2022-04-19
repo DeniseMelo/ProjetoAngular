@@ -1,0 +1,134 @@
+<!--<div class="flex-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastro de Novos Funcionários</mat-card-title>
+    </mat-card-header>
+
+    <form action=" #" id="main-form" (ngSubmit)="submit()" #form="ngForm">
+      <mat-form-field apparence="outline">
+        <mat-label>Nome do Funcionario</mat-label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="name"
+          name="name"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputName="ngModel"
+        />
+        <mat-error *ngIf="inputName.invalid">
+          <span *ngIf="inputName.errors?.['minlength']">
+            Preencha o campo com, no mínimo, 3 caracteres
+          </span>
+          <span *ngIf="inputName.errors?.['required']">
+            Campo de preenchimento obrigatório
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field apparence="outline">
+        <mat-label> E-mail do funcionário</mat-label>
+        <input
+          type="email"
+          matInput
+          [(ngModel)]="email"
+          name="email"
+          autocomplete="false"
+          required
+          #inputEmail="ngModel"
+          email
+        />
+        <mat-error *ngIf="inputEmail.invalid">
+          <span *ngIf="inputEmail.errors?.['required']">
+            Campo de preenchimento obrigatório
+          </span>
+          <span *ngIf="inputEmail.errors?.['email']"> Email inválido </span>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="selectImage()"
+      >
+        Adicionar foto
+      </button>
+      <input
+        type="file"
+        id="file-input"
+        #fileInput
+        [(ngModel)]="foto"
+        name="foto"
+      />
+
+      <button
+        id="submit"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </mat-card>
+</div>-->
+
+<!--********************ReactveForms*************************-->
+
+<div class="flex-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastro de Novos Funcionários</mat-card-title>
+    </mat-card-header>
+
+    <form action=" #" id="main-form" [formGroup]="funcionario">
+      <mat-form-field apparence="outline">
+        <mat-label>Nome do Funcionario</mat-label>
+        <input type="text" matInput formControlName="nome" />
+        <mat-error> Este campo é obrigatório </mat-error>
+      </mat-form-field>
+
+      <mat-form-field apparence="outline">
+        <mat-label> E-mail do funcionário</mat-label>
+        <input type="email" matInput formControlName="email" />
+
+        <mat-error>
+          <span *ngIf="funcionario.get('email')?.getError('required')">
+            Campo de preenchimento obrigatório
+          </span>
+          <span *ngIf="funcionario.get('email')?.getError('email')">
+            Digite um e-mail válido
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        [color]="funcionario.get('foto')?.invalid ? 'warn' : 'primary'"
+        type="button"
+        (click)="selectImage()"
+      >
+        Adicionar foto
+      </button>
+      <input
+        type="file"
+        id="file-input"
+        #fileInput
+        formControlName="foto"
+        accept="image/*"
+      />
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        style="margin-top: 10px"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </mat-card>
+</div>
