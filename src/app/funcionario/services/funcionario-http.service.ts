@@ -7,7 +7,7 @@ import {Funcionario}from '../models/funcionario';
 
 export class FuncionarioHttpService {
 
-  private readonly baseUrl = 'http://localhost:8080/servicos/funcionario'
+  private readonly baseURL = 'http://localhost:8080/servicos/funcionario'
 
   constructor(
     private http: HttpClient
@@ -16,7 +16,11 @@ export class FuncionarioHttpService {
 
 
   getFuncionarios(): Observable <Funcionario []> {
-    return this.http.get<Funcionario[]>(this.baseUrl)
+    return this.http.get<Funcionario[]>(this.baseURL)
   }
+
+  getFuncionarioById(id:number): Observable <Funcionario> {
+    return this.http.get<Funcionario>(`${this.baseURL}/${id}`)
+  }//metodo que recupera um unico usuario pelo seu id para que ao clicar no funcionario apareca na nova pagina criada
 
 }

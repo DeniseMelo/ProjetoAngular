@@ -9,10 +9,12 @@ import { ListarFuncionarioComponent } from './pages/listar-funcionario/listar-fu
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import{ReactiveFormsModule} from '@angular/forms';
+import { FuncionarioComponent } from './pages/funcionario/funcionario.component';
 @NgModule({
   declarations: [
     NovoFuncionarioComponent,
-    ListarFuncionarioComponent
+    ListarFuncionarioComponent,
+    FuncionarioComponent
   ],
   imports: [
     CommonModule,
