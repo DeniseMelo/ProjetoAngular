@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import{ReactiveFormsModule} from '@angular/forms';
 import { FuncionarioComponent } from './pages/funcionario/funcionario.component';
+import { IsNumberGuard } from './guards/is-number.guard';
+
+
 @NgModule({
   declarations: [
     NovoFuncionarioComponent,
@@ -26,7 +29,8 @@ import { FuncionarioComponent } from './pages/funcionario/funcionario.component'
   ],
 
   providers: [
-    FuncionarioHttpService
+    FuncionarioHttpService,
+    IsNumberGuard
   ]
 })
 export class FuncionarioModule { }

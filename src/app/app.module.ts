@@ -26,6 +26,7 @@ import { RxjsModule } from './rxjs/rxjs.module';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

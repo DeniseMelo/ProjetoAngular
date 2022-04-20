@@ -3,7 +3,7 @@ import { ListarFuncionarioComponent } from './pages/listar-funcionario/listar-fu
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NovoFuncionarioComponent } from './pages/novo-funcionario/novo-funcionario.component';
-
+import{IsNumberGuard} from '../funcionario/guards/is-number.guard';
 
 const routes: Routes = [
 
@@ -11,7 +11,6 @@ const routes: Routes = [
     path: 'novo-funcionario',
     component: NovoFuncionarioComponent
   },
-
 
   {
   path:'',
@@ -21,7 +20,10 @@ const routes: Routes = [
 
   {
   path: ':idFuncionario', //para receber um parâmetro pela rota, que neste caso, será o id de
-  component: FuncionarioComponent
+  component: FuncionarioComponent,
+  canActivate:[
+    IsNumberGuard
+    ]
   }
 
 ];
